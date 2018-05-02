@@ -1,0 +1,17 @@
+/*
+For some reason, the change() event only fires when the input field loses focus.
+Binding to other options ('change keypress paste focus textInput input') will 
+fire the event several times, which is bad. The below code works even when 
+content is pasted into the text field, and only fires once as expected.
+*/
+$('#search-form .term').bind('input', function(){
+  console.log('this actually works');
+});
+
+/*
+HTML example:
+<form id="search-form">
+  <input type="text" class="term" name="Search" value="Search" autocomplete="off" />
+  <input type="submit" name="Search" value="Search" />
+</form>
+*/
