@@ -1,16 +1,22 @@
-How can I listen to the form submit event in javascript?
+<!DOCTYPE html>
+    <!--
+    How can I listen to the form submit event in javascript?
+    Writing event handlers in vanilla javascript can be annoying to make work across browsers, 
+    so I'd recommend using a library like jquery to make it robust (and also easier to write).
+    In jquery, if you have a form like this:
+    -->
 
-Writing event handlers in vanilla javascript can be annoying to make work across browsers, so I'd recommend using a library like jquery to make it robust (and also easier to write).
+    <form id="hello-world" action="sayhello">
+        <input type="submit" value="Hello!">
+    </form>
+    
+    <script>
+        //You can attach an event handler like this:
+        $('#hello-world').submit(function(ev) {
+            ev.preventDefault(); // to stop the form from submitting
+            /* Validations go here */
+            this.submit(); // If all the validations succeeded
+        });
+    </script>
 
-In jquery, if you have a form like this:
-
-<form id="hello-world" action="sayhello">
-    <input type="submit" value="Hello!">
-</form>
-You can attach an event handler like this:
-
-$('#hello-world').submit(function(ev) {
-    ev.preventDefault(); // to stop the form from submitting
-    /* Validations go here */
-    this.submit(); // If all the validations succeeded
-});
+</html>
